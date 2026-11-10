@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bukit Awan – Wisata Pegunungan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#eef3ec; --surface:#fbfdfa; --ink:#18291f; --muted:#51655a; --line:#cfdccf;
+  --forest:#1f4a37; --on-forest:#f2f8f3; --sun:#d9622b; --sky1:#f6d9b0; --sky2:#cfe3dc;
+  --m1:#8db39f; --m2:#4f8269; --m3:#1f4a37;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#101a14; --surface:#18271e; --ink:#e6f1e8; --muted:#a3b9aa; --line:#2b4034;
+    --forest:#7fc19f; --on-forest:#0e1d14; --sun:#f08a54; --sky1:#4a3a3a; --sky2:#1d3a36;
+    --m1:#2d5645; --m2:#21412f; --m3:#15291f; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101a14; --surface:#18271e; --ink:#e6f1e8; --muted:#a3b9aa; --line:#2b4034;
+  --forest:#7fc19f; --on-forest:#0e1d14; --sun:#f08a54; --sky1:#4a3a3a; --sky2:#1d3a36;
+  --m1:#2d5645; --m2:#21412f; --m3:#15291f; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Instrument Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+.hero{background:linear-gradient(var(--sky2),var(--sky1));position:relative;overflow:hidden;padding-top:env(safe-area-inset-top,0px)}
+.hero .txt{position:relative;z-index:2;padding:28px 20px 0;max-width:760px;margin:0 auto}
+.brand{font:600 .95rem "Instrument Sans",sans-serif}
+.hero h1{font-size:clamp(2.4rem,11vw,4rem);margin-top:44px;max-width:11ch;color:var(--ink)}
+.hero p{max-width:32ch;color:var(--muted);margin:14px 0 0}
+.scene{display:block;width:100%;height:auto;margin-top:-10px;position:relative}
+.sun{transform:translateY(90px);animation:rise 2.2s .2s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.sun{animation:none;transform:none}}
+.cta{display:inline-block;margin-top:22px;background:var(--forest);color:var(--on-forest);border-radius:12px;padding:13px 22px;font-weight:600;text-decoration:none}
+
+section{padding:44px 0 4px}
+h2{font-size:1.8rem;margin-bottom:6px}
+.sub{color:var(--muted);margin:0 0 18px}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.tab{border:1.5px solid var(--forest);background:transparent;color:var(--forest);border-radius:999px;padding:7px 16px;font:600 .9rem "Instrument Sans",sans-serif;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--forest);color:var(--on-forest)}
+.cards{display:grid;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card .top{height:92px;background:var(--g)}
+.card .body{padding:14px 16px 16px}
+.card h3{font-size:1.2rem}
+.card p{margin:6px 0 8px;color:var(--muted)}
+.meta{font-weight:600;font-size:.9rem}
+
+.box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.line small{display:block;color:var(--muted)}
+.step{display:flex;align-items:center;gap:10px}
+.step button{width:34px;height:34px;border-radius:50%;border:2px solid var(--forest);background:transparent;color:var(--forest);font:700 1.1rem/1 sans-serif;cursor:pointer}
+.step span{min-width:1.4em;text-align:center;font-weight:600}
+.total{display:flex;justify-content:space-between;font:400 1.4rem "Young Serif",serif;margin-top:14px}
+label{display:block;font-weight:600;margin:14px 0 4px}
+input[type=date]{width:100%;padding:11px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+#book{display:block;text-align:center;margin-top:16px;background:var(--sun);color:#fff;border-radius:12px;padding:13px;font-weight:600;text-decoration:none}
+#book[aria-disabled="true"]{opacity:.45;pointer-events:none}
+
+dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0}
+dt{font-weight:600}
+dd{margin:0;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:.9rem;padding:40px 0 32px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="txt">
+    <div class="brand">Wisata Bukit Awan</div>
+    <h1>Sarapan di atas awan.</h1>
+    <p>Dataran tinggi sejuk dengan kebun teh, air terjun, dan matahari terbit yang terlihat dari tenda.</p>
+    <a class="cta" href="#tiket">Hitung tiket</a>
+  </div>
+  <svg class="scene" viewBox="0 0 760 240" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <circle class="sun" cx="560" cy="110" r="46" fill="var(--sun)"/>
+    <path d="M0 150 L120 70 L210 130 L330 50 L470 150 L600 90 L760 160 L760 240 L0 240Z" fill="var(--m1)"/>
+    <path d="M0 190 L90 130 L200 180 L320 120 L450 190 L580 140 L760 195 L760 240 L0 240Z" fill="var(--m2)"/>
+    <path d="M0 225 L140 190 L300 220 L460 195 L620 222 L760 205 L760 240 L0 240Z" fill="var(--m3)"/>
+  </svg>
+</header>
+
+<main class="wrap">
+  <section id="atraksi">
+    <h2>Yang bisa kamu lakukan</h2>
+    <p class="sub">Pilih kategori untuk melihat atraksi.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="tiket">
+    <h2>Hitung tiket masuk</h2>
+    <p class="sub">Harga contoh, sesuaikan dengan tarif resmi.</p>
+    <div class="box">
+      <div class="line"><div>Dewasa<small>Rp25.000 per orang</small></div>
+        <div class="step"><button data-k="a" data-d="-1" aria-label="Kurangi dewasa">−</button><span id="va">2</span><button data-k="a" data-d="1" aria-label="Tambah dewasa">+</button></div></div>
+      <div class="line"><div>Anak 3–12 tahun<small>Rp15.000 per anak</small></div>
+        <div class="step"><button data-k="c" data-d="-1" aria-label="Kurangi anak">−</button><span id="vc">0</span><button data-k="c" data-d="1" aria-label="Tambah anak">+</button></div></div>
+      <label for="tgl">Tanggal kunjungan</label>
+      <input type="date" id="tgl">
+      <div class="total"><span>Total</span><span id="sum">Rp50.000</span></div>
+      <a id="book" href="#" aria-disabled="true" target="_blank" rel="noopener">Pesan lewat WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="info">
+    <h2>Info kunjungan</h2>
+    <div class="box">
+      <dl>
+        <dt>Buka</dt><dd>Setiap hari, 06.00–18.00</dd>
+        <dt>Camping</dt><dd>Check-in 14.00, check-out 11.00</dd>
+        <dt>Suhu</dt><dd>14–22°C, bawa jaket</dd>
+        <dt>Parkir</dt><dd>Motor Rp5.000, mobil Rp10.000</dd>
+      </dl>
+    </div>
+  </section>
+  <footer>© 2026 Wisata Bukit Awan · Ganti nomor WhatsApp di kode sebelum dipakai</footer>
+</main>
+
+<script>
+var WA="6281234567890"; // ganti dengan nomor WhatsApp pengelola
+var spots=[
+ {n:"Sunrise Point",c:"Alam",d:"Titik pandang matahari terbit di atas lautan awan. Datang sebelum jam 05.30.",m:"Gratis dengan tiket masuk",g:"linear-gradient(#f2a65a,#f6d9b0)"},
+ {n:"Air Terjun Tujuh Tingkat",c:"Alam",d:"Trekking ringan 40 menit melewati hutan pinus dan sungai kecil.",m:"Pemandu Rp50.000",g:"linear-gradient(#8db39f,#cfe3dc)"},
+ {n:"Kebun Teh & Petik Teh",c:"Alam",d:"Belajar memetik pucuk teh bersama petani lalu seduh sendiri.",m:"Rp20.000 per orang",g:"linear-gradient(#4f8269,#a9c9a0)"},
+ {n:"Kampung Budaya",c:"Budaya",d:"Pertunjukan tari dan musik tradisional setiap Sabtu sore.",m:"Sabtu, 16.00",g:"linear-gradient(#b4562a,#e9b27a)"},
+ {n:"Workshop Anyam Bambu",c:"Budaya",d:"Membuat anyaman sederhana yang boleh dibawa pulang.",m:"Rp35.000 per orang",g:"linear-gradient(#a8873f,#ecd9a0)"},
+ {n:"Warung Singkong & Kopi",c:"Kuliner",d:"Kopi lokal dan singkong goreng hangat dengan pemandangan lembah.",m:"Mulai Rp12.000",g:"linear-gradient(#5b3b2a,#b58a66)"},
+ {n:"Sarapan Nasi Liwet",c:"Kuliner",d:"Nasi liwet daun pisang dengan lauk kampung, disajikan jam 07.00.",m:"Rp30.000 per porsi",g:"linear-gradient(#7a9a4a,#d6e0a0)"}
+];
+var cats=["Semua","Alam","Budaya","Kuliner"],cur="Semua";
+function drawSpots(){
+  document.getElementById("tabs").innerHTML=cats.map(function(c){
+    return '<button class="tab" data-c="'+c+'" aria-pressed="'+(c===cur)+'">'+c+'</button>'}).join("");
+  document.getElementById("cards").innerHTML=spots.filter(function(s){return cur==="Semua"||s.c===cur}).map(function(s){
+    return '<article class="card"><div class="top" style="--g:'+s.g+'"></div><div class="body"><h3>'+s.n+'</h3><p>'+s.d+'</p><div class="meta">'+s.m+'</div></div></article>'}).join("");
+}
+document.getElementById("tabs").addEventListener("click",function(e){
+  var c=e.target.getAttribute("data-c"); if(c){cur=c;drawSpots();}
+});
+var q={a:2,c:0},rp=function(n){return "Rp"+n.toLocaleString("id-ID")};
+function calc(){
+  var sum=q.a*25000+q.c*15000, t=document.getElementById("tgl").value, b=document.getElementById("book");
+  document.getElementById("va").textContent=q.a;
+  document.getElementById("vc").textContent=q.c;
+  document.getElementById("sum").textContent=rp(sum);
+  var ok=sum>0&&t;
+  b.setAttribute("aria-disabled",ok?"false":"true");
+  var msg="Halo, saya mau pesan tiket Wisata Bukit Awan untuk "+t+": "+q.a+" dewasa, "+q.c+" anak. Total "+rp(sum)+".";
+  b.href=ok?"https://wa.me/"+WA+"?text="+encodeURIComponent(msg):"#";
+}
+document.querySelector("#tiket").addEventListener("click",function(e){
+  var k=e.target.getAttribute("data-k"); if(!k)return;
+  q[k]=Math.max(0,q[k]+parseInt(e.target.getAttribute("data-d"),10)); calc();
+});
+document.getElementById("tgl").addEventListener("input",calc);
+document.getElementById("book").addEventListener("click",function(e){
+  if(this.getAttribute("aria-disabled")==="true")e.preventDefault();
+});
+drawSpots();calc();
+</script>
+</body>
+</html>
